@@ -19,7 +19,8 @@ wss.on('connection', function connection(ws, req) {
     app.ws[query.client_id] = ws;
     ws.on('message', async function incoming(message) {
         await console.log('received: %s', message);
-        if(message.indexOf('yes')!==-1){
+        if(message.indexOf('confirm')!==-1){
+            console.log('update status')
             updateMedicineStatus({message});
         }
 

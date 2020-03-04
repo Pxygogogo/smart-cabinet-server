@@ -76,7 +76,7 @@ module.exports = app => {
     router.post('/adddone', async (req, res) => {
         if (req.body.message === "add done") {
             if (app.ws['test']) {
-                app.ws['test'].send('add done');
+                app.ws['test'].send(`addone${req.id}`);
             }
             res.send('ok');
         } else {
