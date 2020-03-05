@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const Medicine = require('../models/Medicine');
 const User = require('../models/User');
+const Feedback = require('../models/Feedback');
 const wechatApi = require('../utils/wechatApi');
 const jwt = require('jsonwebtoken');
 
@@ -127,6 +128,13 @@ module.exports = app => {
     router.get('/email', async (req, res) => {
         const email = await User.findById(req.query._id, {email: 1});
         res.send(email);
+    });
+    //意见反馈
+    router.post('/feedback',async(req,res)=>{
+        const {feedback, _id} = req.body;
+        if (!feedback || !_id) throw Error('缺少参数');
+        const model = await Feedback.create({feedback,_id});
+        res.send(model);
     });
     app.use('/api', router);
 };
