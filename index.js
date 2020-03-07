@@ -45,6 +45,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 
 require('./routes/index')(app);
+require('./routes/health')(app);
 require('./routes/archive')(app);
 require('./routes/notice')(app);
 require('./plugins/db')(app);
