@@ -21,7 +21,8 @@ module.exports = app => {
             };
             //给树莓派发送提醒
             if (data && app.ws['test']) {
-                console.log('send model');
+                console.log('send notice');
+                console.log('notice' + JSON.stringify(data));
                 app.ws['test'].send('notice' + JSON.stringify(data));
             }
             res.send(result);

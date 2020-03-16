@@ -11,7 +11,9 @@ module.exports = app => {
     router.get('/detail',async(req,res)=>{
         const {id} = req.query;
         const{code,data,msg} = await axios.get(`https://api.itv.cctv.com/publicPush/Detail?id=${id}`);
-        res.send(data.data);
+        const REG = /<video[^>]+>/g;
+        let result = data.data.content.replace(REG,"");
+        res.send(result);
     });
 
     app.use('/api', router);
