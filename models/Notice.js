@@ -6,6 +6,7 @@ const schema = mongoose.Schema({
     medicines: {type:Array},
     noticePerson:{type:String},
     acrtTime:{type:String},
+    durationTime:{type:String}
 });
 
 module.exports = mongoose.model('Notice',schema);

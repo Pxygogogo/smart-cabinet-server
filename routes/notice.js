@@ -6,7 +6,6 @@ const User = require('../models/User');
 module.exports = app => {
 
     router.post('/notices', async (req, res) => {
-
         if (req.body._id) {
             const model = await Notice.findByIdAndUpdate(req.body._id, req.body).exec();
             res.send(model)
